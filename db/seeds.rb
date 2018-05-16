@@ -1,5 +1,8 @@
 require 'random_data'
 
+Post.find_or_create_by!(title: "Test post please ignore", body: "Test body please ignore")
+Comment.find_or_create_by!(post: Post.first, body: "Test comment please ignore")
+
 50.times do
     Post.create!(
         title: RandomData.random_sentence,
