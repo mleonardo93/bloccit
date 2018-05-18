@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    for post in @posts do
-      if (((post.id - 1)% 5) == 0) || post.id == 1
+    @posts.each.with_index do |post, i|
+      if i % 5 == 0 || post.id == 1
         post.title = "SPAM"
       end
     end
