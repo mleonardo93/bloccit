@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts.each.with_index do |post, i|
-      if i % 5 == 0 || post.id == 1
+      if i % 5 == 0 || post == @posts.first
         post.title = "SPAM"
       end
     end
