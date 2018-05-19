@@ -29,7 +29,7 @@ module Bloccit
     config.autoload_paths << File.join(config.root, "lib")
 
     config.action_controller.permit_all_parameters = true
-    config.action_controller.action_on_unpermitted_paramaters = :log
+    config.action_controller.action_on_unpermitted_parameters = :log
     # Don't generate system test files.
     config.generators.system_tests = nil
   end

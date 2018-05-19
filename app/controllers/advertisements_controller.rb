@@ -13,8 +13,8 @@ class AdvertisementsController < ApplicationController
 
   def create
     @ad = Advertisement.new
-    @ad.title = params[:ad][:title]
-    @ad.copy = params[:ad][:copy]
+    @ad.title = params[:advertisement][:title]
+    @ad.copy = params[:advertisement][:copy]
     if @ad.save
       flash[:notice] = "Ad was saved."
       redirect_to @ad
