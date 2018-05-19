@@ -1,0 +1,11 @@
+<h1>Advertisements</h1>
+<h2><%= link_to "New Ad", new_advertisement_path %></h2>
+<% @ads.each do |ad| %>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">
+                <%= @ads.index(ad) + 1 %> <%= link_to ad.title, ad %>
+            </h4>
+        </div>
+    </div>
+<% end %>
