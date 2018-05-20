@@ -31,8 +31,8 @@ class QuestionsController < ApplicationController
 
     def update
       @question = Question.find(params[:id])
-      @question.title = params[:question][:title]
-      @question.body = params[:question][:body]
+      @question.title = params[:question][:title] || @question.title
+      @question.body = params[:question][:body] || @question.body
       @question.resolved = params[:question][:resolved]
 
       if @question.save

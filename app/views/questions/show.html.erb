@@ -5,7 +5,7 @@
         <p><%= @question.body %></p>
     </div>
     <div class="col-md-4">
-        <%= form_for @question do |f| %>
+        <%= form_with model: @question do |f| %>
             <%= label_tag(:resolved, "Is this resolved?") %>
             <%= f.check_box :resolved, input_html: { checked: @question.resolved } %>
             <%= f.submit "Mark resolved" %>
