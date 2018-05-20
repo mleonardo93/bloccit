@@ -17,6 +17,15 @@ end
         price: rand(1000)
     )
 end
+
+50.times do
+    Question.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        resolved: false
+    )
+end
+
 posts = Post.all
 
 100.times do
