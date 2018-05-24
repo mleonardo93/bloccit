@@ -1,10 +1,17 @@
 require 'random_data'
 
-p = Post.find_or_create_by!(title: "Test post please ignore", body: "Test body please ignore")
-Comment.find_or_create_by!(post: p, body: "Test comment please ignore")
+15.times do
+    Topic.create!(
+        name: RandomData.random_sentence,
+        description: RandomData.random_paragraph
+    )
+end
+
+topics = Topic.all
 
 50.times do
     Post.create!(
+        topic: topics.sample,
         title: RandomData.random_sentence,
         body: RandomData.random_paragraph
     )
@@ -39,3 +46,4 @@ puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} ads created"
+puts "#{Question.count} questions created"
