@@ -1,0 +1,7 @@
+<h1>Confirm new user</h1>
+<h4>Is this correct?</h4>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<%= button_to "Yes", {:controller => "users", :action => "create", :params => params}, class: "btn btn-success" %>
+<%= button_to "No", {:controller => "users", :action => "new"}, class: "btn", method: :get %>
