@@ -19,7 +19,12 @@
         <li><%= link_to "Topics", topics_path %></li>
         <li><%= link_to "Questions", questions_path %></li>
         <li><%= link_to "Advertisements", advertisements_path %></li>
-        <li class="pull-right"><%= link_to "Sign Up", new_user_path %></li>
+        <% if current_user %>
+          <li class="pull-right"><%= link_to "Sign out #{current_user.name}", session_path(current_user), method: :delete %></li>
+        <% else %>
+          <li class="pull-right"><%= link_to "Sign in", new_session_path %></li>
+          <li class="pull-right"><%= link_to "Sign up", new_user_path %></li>
+        <% end %>
       </ul>
 
       <% if flash[:notice] %>

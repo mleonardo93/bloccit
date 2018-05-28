@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :sponsored_posts
   end
   resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :advertisements
   resources :questions
   get "about" => "welcome#about"

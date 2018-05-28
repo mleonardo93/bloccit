@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 .social-btn {
     color: blue;
     height: 30px;
@@ -9,5 +12,3 @@
     width: 100px;
     text-align: center;
 }
-@import "bootstrap-sprockets";
-@import "bootstrap";
