@@ -41,16 +41,16 @@ RSpec.describe SponsoredPostsController, type: :controller do
 
   describe "POST create" do
     it "increases the number of SponsoredPost by 1" do
-      expect{ post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } } }.to change(SponsoredPost,:count).by(1)
+      expect{ post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } } }.to change(SponsoredPost,:count).by(1)
     end
 
     it "assigns the new post to @sponsored_post" do
-      post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
+      post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
       expect(assigns(:sponsored_post)).to eq SponsoredPost.last
     end
 
     it "redirects to the new sponsored post" do
-      post :create, params: { topic_id: my_topic.id, post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
+      post :create, params: { topic_id: my_topic.id, sponsored_post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
       expect(response).to redirect_to [my_topic, SponsoredPost.last]
     end
   end
@@ -84,7 +84,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
       new_body = RandomData.random_paragraph
       new_price = rand(1000)
 
-      put :update, params: { topic_id: my_topic.id, id: my_post.id, post: { title: new_title, body: new_body, price: new_price } }
+      put :update, params: { topic_id: my_topic.id, id: my_post.id, sponsored_post: { title: new_title, body: new_body, price: new_price } }
 
       updated_post = assigns(:sponsored_post)
       expect(updated_post.id).to eq my_post.id
@@ -98,7 +98,7 @@ RSpec.describe SponsoredPostsController, type: :controller do
       new_body = RandomData.random_paragraph
       new_price = rand(1000)
 
-      put :update, params: { topic_id: my_topic.id, id: my_post.id, post: { title: new_title, body: new_body, price: new_price } }
+      put :update, params: { topic_id: my_topic.id, id: my_post.id, sponsored_post: { title: new_title, body: new_body, price: new_price } }
       expect(response).to redirect_to [my_topic, my_post]
     end
   end
