@@ -1,7 +1,7 @@
 <h1>Topics</h1>
 
 <div class="row">
-  <% if user_is_authorized_for_topics? %>
+  <% if user_is_authorized_for_admin? %>
     <div class="col-md-4">
       <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
     </div>
