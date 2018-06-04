@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # I was getting an error when creating users, so some searching on SO led me to this.
+  skip_before_action :verify_authenticity_token
+
   def new
     @user = User.new
   end
