@@ -63,14 +63,14 @@ posts = Post.all
 end
 
 admin = User.create!(
-    name: "Admin User"
+    name: "Admin User",
     email: "admin@example.com",
-    password: "helloworld"
+    password: "helloworld",
     role: "admin"
 )
 
 member = User.create!(
-    name: "Member User"
+    name: "Member User",
     email: "member@example.com",
     password: "helloworld"
 )
