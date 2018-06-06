@@ -21,5 +21,5 @@ RSpec.describe Vote, type: :model do
       expect(post).to receive(:update_rank).at_least(:once)
       vote.save!
     end
-  end
+  end 
 end
