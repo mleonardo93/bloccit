@@ -2,14 +2,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   before_save { self.email = email.downcase if email.present? }
   before_save { self.name = name.split(" ").each{|word| word.capitalize!}.join(" ") if name }
   before_save { self.role ||= :member }
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
-  # This differs from how it's written in the checkpoint because I was getting an error. 
-  # I'm still not sure where the error comes from, but I've asked in Slack.
   validates :password, presence: true, length: { minimum: 6 } if :password_digest.nil?
   
   validates :password, length: { minimum: 6 }, allow_blank: true
@@ -17,4 +16,8 @@ class User < ApplicationRecord
   has_secure_password
 
   enum role: [:member, :moderator, :admin]
+
+  def favorite_for(post)
+    favorites.where(post_id: post.id).first
+  end
 end
