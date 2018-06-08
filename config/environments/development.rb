@@ -60,4 +60,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: "localhost" }
+<<<<<<< HEAD
+=======
+
+  config.raise_delivery_errors = true
+>>>>>>> checkpoint-30-assignment
 end

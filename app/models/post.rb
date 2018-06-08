@@ -4,7 +4,11 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+<<<<<<< HEAD
   after_create :create_vote
+=======
+  after_create :add_favorite, :create_vote
+>>>>>>> checkpoint-30-assignment
 
   default_scope { order("rank DESC") }
   scope :ordered_by_title, -> { Post.order("posts.title") }
@@ -34,6 +38,12 @@ class Post < ApplicationRecord
   end
 
   private
+
+  def add_favorite
+    Favorite.create(post: self, user: self.user)
+    FavoriteMailer.new_post(topic, self).deliver_now
+  end
+
   def create_vote
     user.votes.create(value: 1, post: self)
   end
