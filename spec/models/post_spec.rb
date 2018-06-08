@@ -5,10 +5,10 @@ RSpec.describe Post, type: :model do
   let(:description) { RandomData.random_paragraph }
   let(:title) { RandomData.random_sentence }
   let(:body) { RandomData.random_paragraph }
-  let(:topic) { Topic.create!(name: name, description: description) }
-  let(:user) { User.create!(name: "Bloccit User", email: "mleonardo@gmail.com", password: "helloworld") }
-  let(:post) { topic.posts.create!(title: title, body: body, user: user) }
-
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
+  
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
   it { is_expected.to have_many(:favorites) }
@@ -26,7 +26,7 @@ RSpec.describe Post, type: :model do
 
   describe "attributes" do
     it "has title, body and user attributes" do
-      expect(post).to have_attributes(title: title, body: body, user: user)
+      expect(post).to have_attributes(title: post.title, body: post.body, user: post.user)
     end
   end
 
@@ -88,23 +88,6 @@ RSpec.describe Post, type: :model do
 
     it "associates the vote with the poster" do 
       expect(post.votes.first.user).to eq(post.user)
-    end
-  end
-
-  describe "after create" do 
-    before do
-      @another_post = Post.create!(topic: topic, title: title + "test", body: "A 20-character post body", user: user)
-    end
-
-
-    it "creates a favorite" do
-      expect(@another_post.favorites.where(user: user.id)).to exist
-      expect(user.favorites.where(post: @another_post.id)).to exist
-    end
-
-    it "sends an email to users who have favorited the post" do
-      favorite = post.favorites.where(user: user.id)
-      expect(FavoriteMailer).to receive(:new_post).with(topic, @another_post).and_return(double(deliver_now: true))
     end
   end
 end

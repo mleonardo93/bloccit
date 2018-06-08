@@ -74,3 +74,5 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 
 gem 'figaro', '1.0'
+
+gem 'factory_bot_rails', '~> 4.0'

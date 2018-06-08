@@ -20,8 +20,9 @@
         <li><%= link_to "Questions", questions_path %></li>
         <li><%= link_to "Advertisements", advertisements_path %></li>
         <% if current_user %>
-          <li class="pull-right"><%= image_tag("#{avatar_url(current_user)}") %></li>
-          <li class="pull-right"><%= link_to "Sign out #{current_user.name}", session_path(current_user), method: :delete %></li>
+          <li class="pull-right"><%= link_to "Sign out", session_path(current_user), method: :delete %></li>
+          <li class="pull-right gravatar"><%= image_tag current_user.avatar_url(48) %></li>
+          <li class="pull-right"><%= link_to current_user.name, user_path(current_user) %></li>
         <% else %>
           <li class="pull-right"><%= link_to "Sign in", new_session_path %></li>
           <li class="pull-right"><%= link_to "Sign up", new_user_path %></li>
