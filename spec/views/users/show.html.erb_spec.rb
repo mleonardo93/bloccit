@@ -29,6 +29,6 @@ RSpec.describe "users/show.html.erb", type: :view do
 
     assign(:user, u)
     render
-    expect(view).to render_template(partial: "_post", count: 1)
+    expect(view).to render_template(partial: "_favorite_post", count: 1)
   end
 end

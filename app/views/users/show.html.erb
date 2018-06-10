@@ -29,16 +29,6 @@
   <%= render @user.comments %>
 <% end %>
 
-<% if inactive?(@user) %>
-  <h2>This user has not posted or commented yet.</h2>
-<% else %>
-  <h2>Posts</h2>
-  <%= render @user.posts %>
-
-  <h2>Comments</h2>
-  <%= render @user.comments %>
-<% end %>
-
 <% if @user.favorites.empty? %>
   <h2>This user has not favorited any posts.</h2>
 <% else %>
