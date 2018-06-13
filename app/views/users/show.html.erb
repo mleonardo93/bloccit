@@ -19,12 +19,15 @@
   </div>
 </div>
 
-<% if inactive?(@user) %>
-  <h2>This user has not posted or commented yet.</h2>
+<% if no_posts?(@user) %>
+  <h2>This user has not posted yet.</h2>
 <% else %>
   <h2>Posts</h2>
   <%= render @user.posts %>
-
+<% end %>
+<% if no_comments?(@user) %>
+  <h2>This user has not commented yet.</h2>
+<% else %>
   <h2>Comments</h2>
   <%= render @user.comments %>
 <% end %>
