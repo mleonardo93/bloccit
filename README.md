@@ -1,8 +1,7 @@
 ## Bloccit: A Reddit-like social app.
 ### What I learned
 * How to create a Rails app from scratch  
-* How to use RSpec  
-* Red-green testing and other TDD basics  
+* Red-green testing and other TDD concepts  
 * Creating and customizing Rails views, including use of partials  
 * Rails routing, including nested routes and resources  
 * Using helper methods that compile to HTML like link_to and form_for  
